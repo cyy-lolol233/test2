@@ -1,5 +1,3 @@
-
-import java.util.Arrays;
 import java.util.Scanner;
 
  
@@ -36,21 +34,21 @@ import java.util.Scanner;
  
     //根据下标返回对应的数据
     public Object getElem(int i) throws Exception {
-        if (i < 0 || i > curLength) {
-            throw new Exception("-1");
+    if(i < 0 || i > curLength) {
+            return -1;
         }
         return list[i];
     }
  
     //根据数据元素找到对应的所在位置下标
-    public int getIndex(Object e) throws Exception {
+   public int getIndex(Object e)  {
         for (int i = 0; i < curLength; i++) {
-            if (list[i].toString().equals(e.toString())) {//内容全部相同
+            if (list[i].equals(e)) {//内容全部相同
                 return i;
             }
         }
-        //抛异常不用返回值
-        throw new Exception("不存在你要查找的元素");
+       return -1;
+        
     }
  
     //插入数据
@@ -104,16 +102,17 @@ import java.util.Scanner;
     //遍历查询
     public void show() {
         for (int i = 0; i < curLength; i++) {
-            System.out.println(list[i]);
+            System.out.print(list[i]+" ");
         }
+        System.out.println();
     }
  
 }
  public class TsetDemo {
- public static void main(String[] args) throws Exception 
+ public static void main(String[] args) 
  {  Scanner sc = new Scanner(System.in);
     int n = sc.nextInt();
-    SqList L = new SqList(100);
+    SqList L = new SqList(10);
     for(int i = 0;i < n; i++ )
      {
         L.insert(i,sc.nextInt());     
@@ -125,7 +124,7 @@ import java.util.Scanner;
      L.delete(Shan);
      L.show();
      int Cha =  sc.nextInt();
-  
+     System.out.println(L.getIndex(Cha));
 
 
      
