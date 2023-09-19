@@ -56,16 +56,16 @@ import java.util.Scanner;
     //插入数据
     public void insert(int i, Object e) {
         if (isFull()) // 判断顺序表是否已满
-        {//进行扩容
-            System.out.println("顺序表已满,已扩容");
-            list = Arrays.copyOf(list, 2 * curLength);
+        {
+            System.out.println("顺序表已满");
+           
         }
         if (i < 0 || i > curLength) // i小于0或者大于表长
             System.out.println("插入位置不合理，插入失败");// 输出错误提示
         else {
             //把在list[i]之前的数据往后移一，以便插入
-            for (int j = curLength - 1; j >= i; j--) {
-                list[j + 1] = list[j];
+            for (int j = curLength; j > i; j--) {
+                list[j ] = list[j-1];
             }
  
             list[i] = e;
@@ -111,21 +111,21 @@ import java.util.Scanner;
 }
  public class TsetDemo {
  public static void main(String[] args) throws Exception 
- {
-    int n = new Scanner(System.in).nextInt();
-    SqList L = new SqList(n);
+ {  Scanner sc = new Scanner(System.in);
+    int n = sc.nextInt();
+    SqList L = new SqList(100);
     for(int i = 0;i < n; i++ )
      {
-        L.insert(i,new Scanner(System.in).nextInt());     
+        L.insert(i,sc.nextInt());     
      }
-     int Setin = new Scanner(System.in).nextInt();
-     L.insert(Setin,new Scanner(System.in).nextInt()); 
+     int Setin = sc.nextInt();
+     L.insert(Setin,sc.nextInt()); 
      L.show();
-     int Shan = new Scanner(System.in).nextInt();
+     int Shan = sc.nextInt();
      L.delete(Shan);
      L.show();
-     int Cha =  new Scanner(System.in).nextInt();
-     L.getElem(Cha);
+     int Cha =  sc.nextInt();
+  
 
 
      
