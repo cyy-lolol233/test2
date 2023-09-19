@@ -11,7 +11,7 @@ import java.util.Scanner;
  
     public SqList(int maxSize) {//构造方法，以参数maxSize作为顺序表的最大容量
         maxLength = maxSize;
-        list = new ElemType[maxSize];
+        list = new Object[maxSize];
     }
  
     //清空
@@ -35,15 +35,15 @@ import java.util.Scanner;
     }
  
     //根据下标返回对应的数据
-    public ElemType getElem(int i) throws Exception {
+    public Object getElem(int i) throws Exception {
         if (i < 0 || i > curLength) {
-            throw new Exception("第" + i + "个元素不存在");
+            throw new Exception("-1");
         }
         return list[i];
     }
  
     //根据数据元素找到对应的所在位置下标
-    public int getIndex(ElemType e) throws Exception {
+    public int getIndex(Object e) throws Exception {
         for (int i = 0; i < curLength; i++) {
             if (list[i].toString().equals(e.toString())) {//内容全部相同
                 return i;
@@ -70,7 +70,7 @@ import java.util.Scanner;
  
             list[i] = e;
             curLength++;//当前长度必须增加1
-            System.out.println("插入成功");
+            
         }
     }
  
@@ -84,41 +84,50 @@ import java.util.Scanner;
                 list[j] = list[j + 1];
             }
             curLength--;//当前长度必须减少1
-            System.out.println("list[" + i + "]的数据删除成功");
+            
         }
  
     }
  
     //修改数据
-    public void update(int i, ElemType reUp) throws Exception {
+    public void update(int i, Object reUp) throws Exception {
         for (int j = 0; j < curLength; j++) {
             //遍历顺序表，找到与list[i]（即getElem(i))对应的数据所在的位置
             //将其修改为用户想修改的ElemType数据对象
-            if (list[j].toString().equals(getElem(i).toString())) {
+            if (list[j].equals(getElem(i))) {
                 list[j]=reUp;//修改对象
             }
         }
-        System.out.println("修改成功");
+       
     }
  
     //遍历查询
     public void show() {
         for (int i = 0; i < curLength; i++) {
-            System.out.println(list[i].toString());
+            System.out.println(list[i]);
         }
     }
  
 }
  public class TsetDemo {
- public static void main(String[] args) 
+ public static void main(String[] args) throws Exception 
  {
     int n = new Scanner(System.in).nextInt();
     SqList L = new SqList(n);
-    int Setin = new Scanner(System.in).nextInt();
     for(int i = 0;i < n; i++ )
      {
-        L.insert(i+Setin,new Scanner(System.in).next());     
+        L.insert(i,new Scanner(System.in).nextInt());     
      }
+     int Setin = new Scanner(System.in).nextInt();
+     L.insert(Setin,new Scanner(System.in).nextInt()); 
+     L.show();
+     int Shan = new Scanner(System.in).nextInt();
+     L.delete(Shan);
+     L.show();
+     int Cha =  new Scanner(System.in).nextInt();
+     L.getElem(Cha);
+
+
      
  }
     
