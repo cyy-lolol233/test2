@@ -80,7 +80,5 @@ public class tree {
         System.out.println();
         tree.printPostorder(root);
         System.out.println();
-        System.out.println(tree.countNodes(root));
-        System.out.println(tree.countLeaves(root));
     }
 }
