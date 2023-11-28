@@ -11,6 +11,7 @@ public class BinarySearch{
         int index = getIndex(arr, key);
         System.out.println();
         System.out.println(index);
+        sc.close();
     }
 
     public static int getIndex(int[] arr, int key) {
