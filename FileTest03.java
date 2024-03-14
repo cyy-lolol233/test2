@@ -4,7 +4,7 @@ import java.io.IOException;
 
 public class FileTest03 {
     public static void main(String[] args) {
-        String path = "./";
+        String path = "d:\\";
         File root = new File(path);
         try (FileWriter writer = new FileWriter("filename.txt")) {
             traverse(root, writer);
