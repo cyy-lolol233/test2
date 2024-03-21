@@ -11,29 +11,33 @@ class Receiver { // 接电话者
 	}
 }
 
-class Caller implements Runnable { // 打电话者线程
+class Caller implements Runnable  { // 打电话者线程
 	String name;
 	Receiver r;
 	String msg;
+	Thread thread;
 
-	Caller(String name, Receiver r, String msg) {
-		//
-		//
+	Caller(String name, Receiver r, String msg) throws Exception{
+		this.name = name;
+		this.r = r;
+		this.msg = msg;
+		this.thread = new Thread(this);
+        this.thread.start();
+		this.thread.join();
+	    
 	}
 
 	public void run() {
-		//
+		r.call(name, msg);
 	}
 }
 
-public class call {
+public class callTest {
 	public static void main(String args[]) throws Exception {
 		Receiver r = new Receiver();
 		Caller s1 = new Caller("1张三", r, "你好吗?");
 		Caller s2 = new Caller("2李四", r, "祝愿你万事如意");
 		Caller s3 = new Caller("3王二", r, "新年好");
-		//
-		//
 		System.out.println("结束！");
 	}
 }

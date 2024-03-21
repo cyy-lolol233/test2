@@ -2,5 +2,6 @@
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
         "commons-io-2.11.0.jar"
-    ]
+    ],
+    "diffEditor.codeLens": false
 }
